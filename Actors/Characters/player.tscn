@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Actors/Characters/player.gd" id="1_jwd81"]
 [ext_resource type="Texture2D" uid="uid://biewcg31v1hgg" path="res://Assets/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianIdle.png" id="2_hyxpe"]
 [ext_resource type="Texture2D" uid="uid://bnukrqwj5fgyf" path="res://Assets/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianWalk.png" id="3_pd6lt"]
+[ext_resource type="PackedScene" uid="uid://d3uqty7r2nid4" path="res://Skills/managers/axe_skill_manager.tscn" id="4_hm8wq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ed1l0"]
 radius = 3.0
@@ -172,9 +173,6 @@ _data = {
 "walking": SubResource("Animation_jyi43")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mvqpy"]
-radius = 112.0
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 floor_stop_on_slope = false
 script = ExtResource("1_jwd81")
@@ -194,12 +192,8 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="AxeTimer" type="Timer" parent="."]
+[node name="AxeSkillManager" parent="." instance=ExtResource("4_hm8wq")]
 
-[node name="AxeRange" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AxeRange"]
-shape = SubResource("CircleShape2D_mvqpy")
-
-[connection signal="area_entered" from="AxeRange" to="." method="_on_axe_range_area_entered"]
-[connection signal="area_exited" from="AxeRange" to="." method="_on_axe_range_area_exited"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true

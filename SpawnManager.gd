@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var enemy_scene : PackedScene
+@export var enemy_layer : Node2D
 var viewport_screen : Vector2
 var player : Node2D
 
@@ -10,7 +11,7 @@ func _ready():
 
 func _on_timer_timeout():
 	var enemy = enemy_scene.instantiate()
-	get_tree().root.add_child(enemy)
+	enemy_layer.add_child(enemy)
 	enemy.global_position = player.global_position + get_position_around_player()
 
 func get_position_around_player():

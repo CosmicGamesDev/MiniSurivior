@@ -6,15 +6,20 @@
 
 [node name="World" type="Node2D"]
 
-[node name="SpawnManager" type="Node2D" parent="."]
+[node name="SpawnManager" type="Node2D" parent="." node_paths=PackedStringArray("enemy_layer")]
 script = ExtResource("1_uqvag")
 enemy_scene = ExtResource("3_fe3fb")
+enemy_layer = NodePath("../EnemyLayer")
 
 [node name="Timer" type="Timer" parent="SpawnManager"]
 autostart = true
 
+[node name="EnemyLayer" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("1_vpxg7")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="ProjectileLayer" type="Node2D" parent="." groups=["projectile_layer"]]
 
 [connection signal="timeout" from="SpawnManager/Timer" to="SpawnManager" method="_on_timer_timeout"]

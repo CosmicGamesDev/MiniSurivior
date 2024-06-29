@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbkc4w3dbvh01"]
+
+[ext_resource type="Script" path="res://Skills/managers/skill_manager.gd" id="1_dqkov"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvqpy"]
+radius = 63.0
+
+[node name="SkillManager" type="Node2D"]
+script = ExtResource("1_dqkov")
+
+[node name="SkillRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SkillRange"]
+shape = SubResource("CircleShape2D_mvqpy")
+
+[node name="SkillTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="area_entered" from="SkillRange" to="." method="_on_skill_range_area_entered"]
+[connection signal="area_exited" from="SkillRange" to="." method="_on_skill_range_area_exited"]
+[connection signal="timeout" from="SkillTimer" to="." method="_on_skill_timer_timeout"]

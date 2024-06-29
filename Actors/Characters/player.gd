@@ -2,8 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 50
 @onready var animation_player = $AnimationPlayer
-@onready var axe_timer = $AxeTimer
-var axe_range_enemies = []
+
 
 
 @onready var sprite_2d = $Sprite2D
@@ -13,8 +12,6 @@ enum PLAYER_STATES {
 	rage
 }
 
-func _ready():
-	axe_timer.timeout.connect(_on_axe_timeout)
 func  _input(event):
 	if event.is_action_pressed("rage"):
 		if state == PLAYER_STATES.rage:
@@ -41,18 +38,5 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 
-func get_nearest_enemy():
-	pass
-
-func _on_axe_timeout():
-	pass
 
 
-func _on_axe_range_area_entered(area):
-	print(area)
-	axe_range_enemies.push_back(area)
-
-
-
-func _on_axe_range_area_exited(area):
-	axe_range_enemies.erase(area)
