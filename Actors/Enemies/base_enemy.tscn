@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfc5fo1r7vbwa"]
+
+[ext_resource type="Script" path="res://Actors/Enemies/base_enemy.gd" id="1_tu15q"]
+[ext_resource type="Texture2D" uid="uid://d0k1xsr0au2e0" path="res://Assets/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Walk.png" id="2_2tiu3"]
+
+[sub_resource type="Animation" id="Animation_an3hm"]
+resource_name = "walking"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_r66yr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bl4m8"]
+_data = {
+"RESET": SubResource("Animation_r66yr"),
+"walking": SubResource("Animation_an3hm")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0ay7"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hkwx1"]
+radius = 5.09902
+
+[node name="BaseEnemy" type="CharacterBody2D"]
+floor_stop_on_slope = false
+script = ExtResource("1_tu15q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2tiu3")
+hframes = 6
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bl4m8")
+}
+autoplay = "walking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s0ay7")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_hkwx1")

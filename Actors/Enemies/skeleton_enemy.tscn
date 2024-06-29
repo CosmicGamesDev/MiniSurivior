@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://bc8adx52i0wsq"]
+
+[ext_resource type="Script" path="res://SkeletonEnemy.gd" id="1_dx1k4"]
+[ext_resource type="Texture2D" uid="uid://d4e3h0dc5g7qc" path="res://Assets/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Walk.png" id="2_5ijlc"]
+
+[sub_resource type="Animation" id="Animation_xrn3p"]
+resource_name = "walking"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_4u2yq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fxci8"]
+_data = {
+"RESET": SubResource("Animation_4u2yq"),
+"walking": SubResource("Animation_xrn3p")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hdfbq"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ec247"]
+radius = 5.09902
+
+[node name="SkeletonEnemy" type="CharacterBody2D"]
+floor_stop_on_slope = false
+script = ExtResource("1_dx1k4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_fxci8")
+}
+autoplay = "walking"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5ijlc")
+hframes = 3
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hdfbq")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_ec247")

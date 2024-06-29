@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://da3e52d2lsw7n"]
+
+[ext_resource type="Texture2D" uid="uid://b7gkmwdgjtpka" path="res://Assets/Minifantasy_Weapons_v3.0/Minifantasy_Weapons_Assets/Two_Handed_Attacks/Waraxe/TwoHanded_waraxe_f.png" id="1_sd6ad"]
+
+[sub_resource type="Animation" id="Animation_g57wx"]
+resource_name = "throw"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_tjq3d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j45kc"]
+_data = {
+"RESET": SubResource("Animation_tjq3d"),
+"throw": SubResource("Animation_g57wx")
+}
+
+[node name="AxeSkill" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sd6ad")
+hframes = 6
+vframes = 4
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j45kc")
+}
+autoplay = "throw"

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu7m5hykdgetj"]
+
+[ext_resource type="Theme" uid="uid://6q0r6ivtddu1" path="res://mini_theme.tres" id="1_7od31"]
+[ext_resource type="Script" path="res://click_button.gd" id="2_2typm"]
+
+[node name="Menu" type="CanvasGroup"]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+theme = ExtResource("1_7od31")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="ClickButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+script = ExtResource("2_2typm")
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/ClickButton" to="CenterContainer/PanelContainer/VBoxContainer/ClickButton" method="_on_pressed"]

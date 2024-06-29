@@ -1,0 +1,60 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://6q0r6ivtddu1"]
+
+[ext_resource type="Texture2D" uid="uid://ue6l8qxl2vbt" path="res://Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Menus/Buttons/Tinted_Variations/Minifantasy_GuiButtonsBlue.png" id="1_yg2lf"]
+[ext_resource type="FontFile" uid="uid://b7yy68fsm0a65" path="res://Font/QuinqueFive.ttf" id="2_2r7u7"]
+[ext_resource type="Texture2D" uid="uid://ctj0c7u3kc0u8" path="res://Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Menus/Panels_And_Slots/TintedVariations/Minifantasy_GuiPanelsAndSlotsBlue.png" id="3_srt67"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_intm8"]
+texture = ExtResource("1_yg2lf")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(48, 48, 48, 48)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pqoru"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_on6wd"]
+texture = ExtResource("1_yg2lf")
+texture_margin_left = 5.0
+texture_margin_top = 3.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(48, 112, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t4kcp"]
+texture = ExtResource("1_yg2lf")
+texture_margin_left = 5.0
+texture_margin_top = 3.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(48, 16, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tlksw"]
+texture = ExtResource("1_yg2lf")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(48, 208, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tljxb"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+texture = ExtResource("3_srt67")
+region_rect = Rect2(48, 48, 48, 48)
+
+[resource]
+default_font = ExtResource("2_2r7u7")
+Button/font_sizes/font_size = 5
+Button/fonts/font = ExtResource("2_2r7u7")
+Button/styles/disabled = SubResource("StyleBoxTexture_intm8")
+Button/styles/focus = SubResource("StyleBoxEmpty_pqoru")
+Button/styles/hover = SubResource("StyleBoxTexture_on6wd")
+Button/styles/normal = SubResource("StyleBoxTexture_t4kcp")
+Button/styles/pressed = SubResource("StyleBoxTexture_tlksw")
+Fonts/fonts/large = ExtResource("2_2r7u7")
+Fonts/fonts/normal = ExtResource("2_2r7u7")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_tljxb")
