@@ -22,4 +22,6 @@ autostart = true
 
 [node name="ProjectileLayer" type="Node2D" parent="." groups=["projectile_layer"]]
 
+[node name="DamageLayer" type="Node2D" parent="." groups=["damage_layer"]]
+
 [connection signal="timeout" from="SpawnManager/Timer" to="SpawnManager" method="_on_timer_timeout"]

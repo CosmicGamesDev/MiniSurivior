@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgme5y013wvsf"]
+
+[ext_resource type="Theme" uid="uid://6q0r6ivtddu1" path="res://mini_theme.tres" id="1_bexfm"]
+[ext_resource type="Script" path="res://damage_label.gd" id="1_rgn1x"]
+[ext_resource type="Shader" path="res://damage_label.gdshader" id="1_y5f6v"]
+
+[sub_resource type="Gradient" id="Gradient_6ycte"]
+offsets = PackedFloat32Array(0.329457, 0.515504, 0.786822, 1)
+colors = PackedColorArray(1, 0.290196, 0, 1, 1, 1, 0.733333, 1, 1, 0.0560001, 0.0410667, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4low"]
+gradient = SubResource("Gradient_6ycte")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.529915, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xv7qt"]
+shader = ExtResource("1_y5f6v")
+shader_parameter/angle = -0.2
+shader_parameter/thickness = 5.0
+shader_parameter/scale = 1.0
+shader_parameter/shear = Vector2(0, 0)
+shader_parameter/slices = 10
+shader_parameter/outline = true
+shader_parameter/outline_width = 2.0
+shader_parameter/front_tex = SubResource("GradientTexture2D_g4low")
+shader_parameter/show_bound = false
+
+[node name="DamageLabel" type="Node2D"]
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("1_rgn1x")
+
+[node name="Label" type="Label" parent="."]
+material = SubResource("ShaderMaterial_xv7qt")
+offset_left = -50.0
+offset_top = -12.0
+offset_right = 50.0
+offset_bottom = 13.0
+theme = ExtResource("1_bexfm")
+theme_override_font_sizes/font_size = 5
+text = "10
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

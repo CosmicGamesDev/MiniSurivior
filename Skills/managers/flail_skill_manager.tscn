@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://flowl10b1mqa"]
+
+[ext_resource type="PackedScene" uid="uid://bbkc4w3dbvh01" path="res://Skills/managers/skill_manager.tscn" id="1_252kg"]
+[ext_resource type="Script" path="res://Skills/managers/fire_blast_skill_manager.gd" id="2_0l1ut"]
+[ext_resource type="PackedScene" uid="uid://tnklxdb35slu" path="res://Skills/fire_blast_skill.tscn" id="3_hsxt4"]
+
+[node name="FireBlastSkillManager" instance=ExtResource("1_252kg")]
+script = ExtResource("2_0l1ut")
+skill_scene = ExtResource("3_hsxt4")

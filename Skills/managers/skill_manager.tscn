@@ -9,6 +9,9 @@ radius = 63.0
 script = ExtResource("1_dqkov")
 
 [node name="SkillRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SkillRange"]
 shape = SubResource("CircleShape2D_mvqpy")

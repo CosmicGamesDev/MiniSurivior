@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c345id7gntqbv"]
+
+[ext_resource type="Texture2D" uid="uid://ds8xyqsi2cc0" path="res://Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Bars/rage_bar_bg.png" id="1_fvlsa"]
+[ext_resource type="Texture2D" uid="uid://f4eol55c6ap7" path="res://Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Bars/rage_bar_overlay.png" id="2_5v57i"]
+[ext_resource type="Texture2D" uid="uid://cts70cpctcqbd" path="res://Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Bars/rage_bar_fill.png" id="3_ktlo8"]
+
+[node name="RageBar" type="TextureProgressBar"]
+offset_right = 34.0
+offset_bottom = 10.0
+value = 100.0
+texture_under = ExtResource("1_fvlsa")
+texture_over = ExtResource("2_5v57i")
+texture_progress = ExtResource("3_ktlo8")
+texture_progress_offset = Vector2(3, 2)

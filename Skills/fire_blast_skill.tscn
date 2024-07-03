@@ -1,0 +1,148 @@
+[gd_scene load_steps=9 format=3 uid="uid://tnklxdb35slu"]
+
+[ext_resource type="Script" path="res://Skills/shock_wave_skill.gd" id="1_tsp0w"]
+[ext_resource type="Texture2D" uid="uid://bf03vj0yt65ql" path="res://Assets/Minifantasy_MagicAndSorcery_v1.1/Minifantasy_MagicAndSorcery_Assets/Spells/Fire/Fire_Explosion/Minifantasy_MagicAndSorceryFireExplosionThrowing.png" id="2_kifm0"]
+[ext_resource type="PackedScene" uid="uid://ci8hmveh7ukj8" path="res://Components/hit_box_component.tscn" id="3_ly6i6"]
+
+[sub_resource type="Animation" id="Animation_tjq3d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitBoxComponent/CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_6bnji"]
+resource_name = "explode"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitBoxComponent/CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.7, 1.7)]
+}
+
+[sub_resource type="Animation" id="Animation_g57wx"]
+resource_name = "throw"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j45kc"]
+_data = {
+"RESET": SubResource("Animation_tjq3d"),
+"explode": SubResource("Animation_6bnji"),
+"throw": SubResource("Animation_g57wx")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jsv2v"]
+radius = 12.0
+
+[node name="FireBlastSkill" type="Node2D"]
+script = ExtResource("1_tsp0w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("2_kifm0")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j45kc")
+}
+autoplay = "explode"
+
+[node name="HitBoxComponent" parent="." instance=ExtResource("3_ly6i6")]
+
+[node name="CollisionShape2D" parent="HitBoxComponent" index="0"]
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("CircleShape2D_jsv2v")
+
+[editable path="HitBoxComponent"]

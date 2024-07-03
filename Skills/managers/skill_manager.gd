@@ -36,7 +36,9 @@ func find_closest_enemy():
 func _on_skill_timer_timeout():
 	if skill_enemies_in_range.size() > 0:
 		var target_enemy = find_closest_enemy() as Node2D
-		var axe = skill_scene.instantiate() as Node2D
-		projectile_layer.add_child(axe)
-		axe.global_position = target_enemy.global_position
-		axe.rotation = player.get_angle_to(target_enemy.global_position)
+		var skill = skill_scene.instantiate() as Node2D
+		print(projectile_layer)
+		projectile_layer.add_child(skill)
+		var normal_to_enemy = player.global_position.direction_to(target_enemy.global_position).normalized()
+		skill.global_position = target_enemy.global_position - (normal_to_enemy * Vector2(8,8))
+		skill.rotation = player.get_angle_to(target_enemy.global_position)

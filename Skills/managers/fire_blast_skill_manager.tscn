@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bib30au1qam7f"]
+
+[ext_resource type="PackedScene" uid="uid://bbkc4w3dbvh01" path="res://Skills/managers/skill_manager.tscn" id="1_vcmdn"]
+
+[node name="FireBlastSkillManager" instance=ExtResource("1_vcmdn")]

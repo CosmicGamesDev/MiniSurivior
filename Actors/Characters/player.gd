@@ -3,8 +3,6 @@ extends CharacterBody2D
 @export var speed = 50
 @onready var animation_player = $AnimationPlayer
 
-
-
 @onready var sprite_2d = $Sprite2D
 var state = PLAYER_STATES.normal
 enum PLAYER_STATES {
