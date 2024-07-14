@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://36manhc0n22s"]
+
+[ext_resource type="Script" path="res://Actors/Enemies/giant_enemy.gd" id="1_jj5hl"]
+[ext_resource type="Texture2D" uid="uid://6sj5d4hcl63v" path="res://Assets/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Walk.png" id="2_5s24n"]
+[ext_resource type="PackedScene" uid="uid://1sfk5voetyck" path="res://Components/hurt_box_component.tscn" id="3_mde5m"]
+
+[sub_resource type="Animation" id="Animation_r66yr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_an3hm"]
+resource_name = "walking"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bl4m8"]
+_data = {
+"RESET": SubResource("Animation_r66yr"),
+"walking": SubResource("Animation_an3hm")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0ay7"]
+radius = 3.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dixw"]
+radius = 6.0
+height = 20.0
+
+[node name="GiantEnemy" type="CharacterBody2D"]
+floor_stop_on_slope = false
+script = ExtResource("1_jj5hl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5s24n")
+hframes = 6
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bl4m8")
+}
+autoplay = "walking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s0ay7")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_mde5m")]
+parent = NodePath("..")
+
+[node name="CollisionShape2D" parent="HurtBoxComponent" index="0"]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_2dixw")
+
+[editable path="HurtBoxComponent"]

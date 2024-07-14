@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b36tm2bp0ibsv"]
+
+[ext_resource type="Texture2D" uid="uid://cwa85qgogqj6a" path="res://Assets/Minifantasy_CraftingAndProfessions_v1.0/Carfting_Mats/ores.png" id="1_r50qw"]
+[ext_resource type="PackedScene" uid="uid://c3jltha4n07ob" path="res://Components/item_pickup_area.tscn" id="2_bctqw"]
+
+[node name="Ore" type="Sprite2D"]
+texture = ExtResource("1_r50qw")
+region_enabled = true
+region_rect = Rect2(0, 8, 4, 4)
+
+[node name="ItemPickupArea" parent="." instance=ExtResource("2_bctqw")]

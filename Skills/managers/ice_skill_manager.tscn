@@ -1,27 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3lfv84356vc2"]
+[gd_scene load_steps=4 format=3 uid="uid://c0hsqhf3lfi8v"]
 
+[ext_resource type="PackedScene" uid="uid://bbkc4w3dbvh01" path="res://Skills/managers/skill_manager.tscn" id="1_hi5gs"]
 [ext_resource type="Script" path="res://Skills/managers/ice_skill_manager.gd" id="1_penck"]
 [ext_resource type="PackedScene" uid="uid://b05kkogffwm0" path="res://Skills/ice_skill.tscn" id="2_a7n03"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mvqpy"]
-radius = 63.0
-
-[node name="IceSkillManager" type="Node2D"]
+[node name="IceSkillManager" instance=ExtResource("1_hi5gs")]
 script = ExtResource("1_penck")
 skill_scene = ExtResource("2_a7n03")
-
-[node name="SkillRange" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SkillRange"]
-shape = SubResource("CircleShape2D_mvqpy")
-
-[node name="SkillTimer" type="Timer" parent="."]
-wait_time = 0.3
-autostart = true
-
-[connection signal="area_entered" from="SkillRange" to="." method="_on_skill_range_area_entered"]
-[connection signal="area_exited" from="SkillRange" to="." method="_on_skill_range_area_exited"]
-[connection signal="timeout" from="SkillTimer" to="." method="_on_skill_timer_timeout"]

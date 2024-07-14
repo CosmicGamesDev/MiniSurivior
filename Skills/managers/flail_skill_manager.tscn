@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bbkc4w3dbvh01" path="res://Skills/managers/skill_manager.tscn" id="1_252kg"]
 [ext_resource type="Script" path="res://Skills/managers/fire_blast_skill_manager.gd" id="2_0l1ut"]
-[ext_resource type="PackedScene" uid="uid://tnklxdb35slu" path="res://Skills/fire_blast_skill.tscn" id="3_hsxt4"]
+[ext_resource type="PackedScene" uid="uid://cwevrpebxix7y" path="res://Skills/flail_skill.tscn" id="3_biq4u"]
 
-[node name="FireBlastSkillManager" instance=ExtResource("1_252kg")]
+[node name="FlailSkillManager" instance=ExtResource("1_252kg")]
 script = ExtResource("2_0l1ut")
-skill_scene = ExtResource("3_hsxt4")
+skill_scene = ExtResource("3_biq4u")

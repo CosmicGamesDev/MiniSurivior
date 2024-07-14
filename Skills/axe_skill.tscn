@@ -96,8 +96,6 @@ libraries = {
 autoplay = "throw"
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_2t6lt")]
-collision_layer = 0
-monitorable = false
 
 [node name="CollisionShape2D" parent="HitBoxComponent" index="0"]
 shape = SubResource("CircleShape2D_jsv2v")

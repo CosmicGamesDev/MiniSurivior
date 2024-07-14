@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcxyi043in3ao"]
+
+[ext_resource type="Texture2D" uid="uid://b3yappeq2oxc4" path="res://Assets/Minifantasy_CraftingAndProfessions_v1.0/Carfting_Mats/elementals.png" id="1_flj2h"]
+[ext_resource type="PackedScene" uid="uid://c3jltha4n07ob" path="res://Components/item_pickup_area.tscn" id="2_gtrms"]
+
+[node name="Topaz" type="Sprite2D"]
+texture = ExtResource("1_flj2h")
+region_enabled = true
+region_rect = Rect2(32, 0, 3, 4)
+
+[node name="ItemPickupArea" parent="." instance=ExtResource("2_gtrms")]

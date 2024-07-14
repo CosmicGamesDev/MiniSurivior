@@ -1,5 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3uqty7r2nid4"]
+[gd_scene load_steps=3 format=3 uid="uid://d3uqty7r2nid4"]
 
 [ext_resource type="PackedScene" uid="uid://bbkc4w3dbvh01" path="res://Skills/managers/skill_manager.tscn" id="1_jc4x3"]
+[ext_resource type="Script" path="res://Skills/managers/axe_skill_manager.gd" id="2_bok3l"]
 
 [node name="AxeSkillManager" instance=ExtResource("1_jc4x3")]
+script = ExtResource("2_bok3l")

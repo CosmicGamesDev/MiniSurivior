@@ -1,27 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bie7tmykkk7ib"]
+[gd_scene load_steps=4 format=3 uid="uid://cq66y6pkaoeg5"]
 
 [ext_resource type="Script" path="res://Skills/managers/shock_wave_skill_manager.gd" id="1_05qhw"]
+[ext_resource type="PackedScene" uid="uid://bbkc4w3dbvh01" path="res://Skills/managers/skill_manager.tscn" id="1_neqd1"]
 [ext_resource type="PackedScene" uid="uid://cpmxidsbak4ch" path="res://Skills/shock_wave_skill.tscn" id="2_n10g1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mvqpy"]
-radius = 63.0
-
-[node name="ShockWaveSkillManager" type="Node2D"]
+[node name="ShockWaveSkillManager" instance=ExtResource("1_neqd1")]
 script = ExtResource("1_05qhw")
 skill_scene = ExtResource("2_n10g1")
-
-[node name="SkillRange" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SkillRange"]
-shape = SubResource("CircleShape2D_mvqpy")
-
-[node name="SkillTimer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
-[connection signal="area_entered" from="SkillRange" to="." method="_on_skill_range_area_entered"]
-[connection signal="area_exited" from="SkillRange" to="." method="_on_skill_range_area_exited"]
-[connection signal="timeout" from="SkillTimer" to="." method="_on_skill_timer_timeout"]

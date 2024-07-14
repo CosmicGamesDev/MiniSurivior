@@ -2,15 +2,23 @@ extends Node2D
 
 @export var enemy_scene : PackedScene
 @export var enemy_layer : Node2D
-var viewport_screen : Vector2
+var viewport_screen := Vector2(100,0)
 var player : Node2D
+
+var enemy_scenes = [
+	"res://Actors/Enemies/skeleton_enemy.tscn",
+	"res://Actors/Enemies/minotaur_enemy.tscn",
+	"res://Actors/Enemies/giant_enemy.tscn",
+	"res://Actors/Enemies/bear_enemy.tscn"
+]
+
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	viewport_screen = get_viewport_rect().size
 
 func _on_timer_timeout():
-	var enemy = enemy_scene.instantiate()
+	var enemy = load(enemy_scenes.pick_random()).instantiate()
 	enemy_layer.add_child(enemy)
 	enemy.global_position = player.global_position + get_position_around_player()
 

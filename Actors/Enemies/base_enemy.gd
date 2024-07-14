@@ -9,7 +9,6 @@ class_name  BaseEnemy
 @onready var hit_label_scene = preload("res://damage_label.tscn")
 var damage_layer
 func _ready():
-	hurt_box_component.area_entered.connect(_on_hurt_box_component_area_entered)
 	target = get_tree().get_first_node_in_group("player")
 	damage_layer=  get_tree().get_first_node_in_group("damage_layer")
 
@@ -27,12 +26,11 @@ func move_to_player():
 	move_and_slide()
 
 
-func _on_hurt_box_component_area_entered(area: Area2D):
-	if area.is_in_group("hit_box"):
-		var hit_label = hit_label_scene.instantiate()
-		hit_label.global_position = global_position
-		hit_label.damage = area.damage
-		damage_layer.add_child(hit_label)
-		base_health = base_health - area.damage
+func damage(damage):
+	var hit_label = hit_label_scene.instantiate()
+	hit_label.global_position = global_position
+	hit_label.damage = damage
+	damage_layer.add_child(hit_label)
+	base_health = base_health - damage
 	if base_health <= 0:
 		queue_free()

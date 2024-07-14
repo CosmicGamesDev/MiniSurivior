@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cfc5fo1r7vbwa"]
 
 [ext_resource type="Script" path="res://Actors/Enemies/base_enemy.gd" id="1_tu15q"]
-[ext_resource type="Texture2D" uid="uid://d0k1xsr0au2e0" path="res://Assets/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Walk.png" id="2_2tiu3"]
+[ext_resource type="Texture2D" uid="uid://c5l0cftmjbjus" path="res://Assets/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Walk.png" id="2_opvhj"]
 [ext_resource type="PackedScene" uid="uid://1sfk5voetyck" path="res://Components/hurt_box_component.tscn" id="3_7cj51"]
 
 [sub_resource type="Animation" id="Animation_r66yr"]
@@ -50,7 +50,7 @@ floor_stop_on_slope = false
 script = ExtResource("1_tu15q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_2tiu3")
+texture = ExtResource("2_opvhj")
 hframes = 6
 vframes = 4
 
@@ -63,4 +63,5 @@ autoplay = "walking"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_s0ay7")
 
-[node name="HurtBoxComponent" parent="." instance=ExtResource("3_7cj51")]
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_7cj51")]
+parent = NodePath("..")
